@@ -201,16 +201,19 @@ const InDepthAnomalyAnalysis = ({
   }, [reattributionExportData, setExporting, selectedRadio1]);
 
   return (
-    <div className="flex flex-col w-full bg-background/50 dark:bg-card/50 border border-border/20 rounded-lg shadow-sm p-4 transition-all duration-300 space-y-4">
-      {/* Modern Section Header */}
-      <div className="flex items-center gap-3 pb-2 border-b border-border/10">
-        <h2 className="text-lg font-semibold text-foreground">
-          In-Depth Anomaly Analysis
-        </h2>
+    <div className="flex flex-col w-full bg-gradient-to-br from-slate-50/50 via-white/30 to-slate-100/50 dark:from-slate-800/50 dark:via-slate-900/40 dark:to-slate-950/50 border border-border/30 rounded-2xl shadow-xl p-6 transition-all duration-300 space-y-6">
+      {/* Premium Section Header */}
+      <div className="flex items-start justify-between gap-4 pb-4 border-b border-border/20">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground tracking-tight">
+            In-Depth Anomaly Analysis
+          </h2>
+          <p className="text-sm text-muted-foreground mt-1">Detailed fraud detection metrics and patterns</p>
+        </div>
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 transition-all duration-300">
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 transition-all duration-300">
         {/* Fraud Categories Donut Chart */}
         <div
           ref={(el) => {
@@ -293,7 +296,7 @@ const InDepthAnomalyAnalysis = ({
       </div>
 
       {/* Second Row - Date Wise & Publisher/Vendor Analysis */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
         {/* Area Chart */}
         <div
           ref={(el) => {

@@ -62,30 +62,30 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 221 30% 16%;
-    --foreground: 210 20% 98%;
-    --card: 221 25% 22%;
-    --card-foreground: 210 20% 98%;
-    --popover: 221 25% 22%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 221 25% 22%;
-    --secondary: 280 65% 50%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 221 25% 35%;
-    --muted-foreground: 210 10% 65%;
-    --accent: 43 96% 56%;
-    --accent-foreground: 221 25% 22%;
+    --background: 220 40% 12%;
+    --foreground: 210 25% 98%;
+    --card: 220 35% 18%;
+    --card-foreground: 210 25% 98%;
+    --popover: 220 35% 18%;
+    --popover-foreground: 210 25% 98%;
+    --primary: 217 91% 62%;
+    --primary-foreground: 220 35% 18%;
+    --secondary: 280 70% 55%;
+    --secondary-foreground: 210 25% 98%;
+    --muted: 220 25% 40%;
+    --muted-foreground: 210 15% 70%;
+    --accent: 43 96% 58%;
+    --accent-foreground: 220 35% 18%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 221 25% 28%;
-    --input: 221 25% 28%;
-    --ring: 217 91% 60%;
-    --chart-1: 217 91% 60%;
-    --chart-2: 163 72% 43%;
-    --chart-3: 43 96% 56%;
-    --chart-4: 280 65% 50%;
-    --chart-5: 339 82% 58%;
+    --destructive-foreground: 210 25% 98%;
+    --border: 220 25% 30%;
+    --input: 220 25% 30%;
+    --ring: 217 91% 62%;
+    --chart-1: 217 91% 62%;
+    --chart-2: 163 72% 48%;
+    --chart-3: 43 96% 58%;
+    --chart-4: 280 70% 55%;
+    --chart-5: 339 82% 62%;
   }
 }
 
@@ -198,9 +198,24 @@ body {
   @keyframes slideInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInUpBounce {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+    100% {
       opacity: 1;
       transform: translateY(0);
     }

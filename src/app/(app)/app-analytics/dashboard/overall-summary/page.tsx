@@ -454,12 +454,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 w-full px-4 py-6 md:px-6">
+      <div className="flex flex-col gap-8 w-full px-4 py-8 md:px-8 bg-gradient-to-br from-background via-background/95 to-background/50 dark:from-slate-950/50 dark:via-slate-950/40 dark:to-slate-900/20 min-h-screen">
 
         <h1 className="text-lg font-semibold text-foreground text-center md:hidden sticky top-0 z-50 bg-background px-4 py-3 border-b border-border/20">
           Overall Summary
         </h1>
-        <div className="sticky top-0 z-50 bg-background/80 dark:bg-card/80 border border-border/20 rounded-lg shadow-sm backdrop-blur-sm">
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-background/95 via-background/90 to-background/95 dark:from-slate-900/95 dark:via-slate-900/90 dark:to-slate-900/95 border border-border/20 rounded-xl shadow-lg backdrop-blur-xl">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 p-3 sm:p-3 md:h-[52px]">
             <div className="lg:hidden w-full flex flex-col gap-3">
               <div className="flex items-center justify-between w-full">
@@ -605,7 +605,7 @@ const Dashboard = () => {
         </div>
 
         {/* Charts Grid Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 transition-all duration-300">
+        <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 transition-all duration-300">
           <div
             ref={(el) => {
               if (el) cardRefs.current["split_of_sources"] = el;

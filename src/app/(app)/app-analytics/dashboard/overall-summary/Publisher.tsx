@@ -710,22 +710,21 @@ export default function Publisher({
 
 
   return (
-    <div className="w-full backdrop-blur-lg bg-background/80 dark:bg-card/80 border border-border/40 rounded-xl shadow-lg p-0 transition-all duration-300">
-      {/* Modern Section Header with Event Type Selector */}
-      <div className="flex  items-start sm:items-center justify-between gap-2 p-2 ">
-        {/* Title with gradient bars */}
-        <div className="flex items-center justify-center gap-2">
-        <div className="h-8 w-1 bg-gradient-to-b from-primary to-secondary rounded-full dark:from-primary dark:to-white" />
-        <h2 className="text-subHeader font-bold text-foreground gradient-text dark:!text-white dark:bg-none dark:[-webkit-text-fill-color:white]">
-          Publisher Validation Summary
-        </h2>
-        <div className="h-8 w-1 bg-gradient-to-b from-secondary to-primary rounded-full dark:from-white dark:to-primary" />
+    <div className="w-full bg-gradient-to-br from-slate-50/50 via-white/30 to-slate-100/50 dark:from-slate-800/50 dark:via-slate-900/40 dark:to-slate-950/50 border border-border/30 rounded-2xl shadow-xl p-0 transition-all duration-300 overflow-hidden">
+      {/* Premium Section Header with Event Type Selector */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border-b border-border/20">
+        {/* Title Section */}
+        <div className="flex flex-col gap-1">
+          <h2 className="text-2xl font-bold text-foreground tracking-tight">
+            Publisher Validation Summary
+          </h2>
+          <p className="text-sm text-muted-foreground">Detailed publisher performance metrics</p>
         </div>
 
-        {/* Event Type Dropdown */}
-        <div className="flex items-center gap-2 p-2">
-          <span className="text-subBody text-muted-foreground hidden sm:inline">
-            Filter by:
+        {/* Event Type Dropdown - Premium Styling */}
+        <div className="flex items-center gap-3 bg-gradient-to-r from-slate-50/50 to-white/50 dark:from-slate-800/30 dark:to-slate-900/30 px-4 py-2.5 rounded-lg border border-border/20 backdrop-blur-sm">
+          <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden sm:inline">
+            Filter:
           </span>
           <DropdownMenu
             open={isEventTypeDropdownOpen}

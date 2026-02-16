@@ -304,7 +304,7 @@ const StatsCards = ({
   }
 
   return (
-    <div className={`grid ${getGridColsClass()} w-full gap-4 ${className}`}>
+    <div className={`grid ${getGridColsClass()} w-full gap-6 ${className}`}>
       {cardItems.map((item, index) => {
         const hasPercentage = showPercentage && item.percentage;
         const borderColor = item.colorCode;
@@ -315,48 +315,56 @@ const StatsCards = ({
             key={item.key} 
             className="flex-1 group"
             style={{
-              animation: `slideInUp 0.5s ease-out ${index * 0.1}s both`,
+              animation: `slideInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.15}s both`,
             }}
           >
+            {/* Premium Card Container */}
             <div
-              className="relative overflow-hidden dark:bg-gradient-to-br dark:from-card dark:to-card/80 bg-gradient-to-br from-white to-slate-50/50 rounded-lg border border-border/20 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/30 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-slate-50"
+              className="relative h-full overflow-hidden dark:bg-gradient-to-br dark:from-slate-800/60 dark:via-slate-900/40 dark:to-slate-950/60 bg-gradient-to-br from-slate-50 via-white to-slate-100 rounded-2xl border border-gradient-to-br border-border/30 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
               style={{
                 height: getCardHeightStyle(),
+                borderImage: `linear-gradient(135deg, ${borderColor}40, ${borderColor}10) 1`,
               }}
             >
-              {/* Animated gradient bar */}
+              {/* Gradient Top Border Accent */}
               <div
-                className="absolute top-0 right-0 h-full transition-all duration-500 group-hover:w-1 opacity-0 group-hover:opacity-100"
+                className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-all duration-500"
                 style={{
-                  width: '0.25rem',
-                  background: `linear-gradient(180deg, ${borderColor}, transparent)`,
+                  background: `linear-gradient(90deg, ${borderColor}, ${borderColor}40, transparent)`,
                 }}
               />
-              
-              {/* Animated background accent - subtle */}
+
+              {/* Premium Background Blur Effect */}
               <div
-                className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-15 pointer-events-none"
+                className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none"
                 style={{
                   background: borderColor,
                 }}
               />
 
-              {/* Left side decorative accent */}
+              {/* Left accent glow */}
               <div
-                className="absolute -left-8 -top-8 w-16 h-16 rounded-full blur-2xl opacity-5 transition-all duration-500 group-hover:opacity-10"
+                className="absolute -left-10 top-1/2 w-24 h-24 rounded-full blur-2xl opacity-5 transition-all duration-500 group-hover:opacity-15"
                 style={{
                   background: borderColor,
+                  transform: 'translateY(-50%)',
                 }}
               />
 
-              {/* Icon in top left corner */}
+              {/* Icon Container - Premium Styling */}
               {icons[item.key] && (() => {
                 const IconComponent = icons[item.key];
                 return (
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-md" style={{ backgroundColor: `${borderColor}15` }}>
+                  <div className="absolute top-4 right-4 z-10">
+                    <div 
+                      className="inline-flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 group-hover:scale-125 group-hover:shadow-lg backdrop-blur-md"
+                      style={{ 
+                        backgroundColor: `${borderColor}25`,
+                        border: `1.5px solid ${borderColor}30`,
+                      }}
+                    >
                       <IconComponent 
-                        className="w-4 h-4 transition-all duration-300"
+                        className="w-5 h-5 transition-all duration-300 group-hover:rotate-12"
                         style={{ color: borderColor }}
                       />
                     </div>
@@ -364,35 +372,51 @@ const StatsCards = ({
                 );
               })()}
 
-              <div className="relative p-4 h-full flex flex-col justify-center items-center">
-                <div className="flex flex-col gap-2 items-center w-full">
-                  {/* Count Row with animation */}
-                  <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
-                    <div
-                      className="text-2xl sm:text-3xl font-bold text-center tracking-tight transition-all duration-300 dark:text-white group-hover:scale-110"
-                      style={{ color: hasPercentage ? countColor : undefined }}
-                    >
-                      <AnimatedCount targetValue={item.count} />
-                    </div>
-                    {hasPercentage && (
-                      <span
-                        className="text-xs sm:text-sm font-bold rounded-md px-2 py-1 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md backdrop-blur-sm"
-                        style={{
-                          backgroundColor: `${borderColor}20`,
-                          color: borderColor,
-                          border: `1px solid ${borderColor}40`,
-                        }}
-                      >
-                        {item.percentage}
-                      </span>
-                    )}
-                  </div>
-                  {/* Label with fade in */}
-                  <div className="text-xs sm:text-sm font-medium text-muted-foreground text-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+              {/* Content Area */}
+              <div className="relative h-full flex flex-col justify-between p-6">
+                {/* Top Section - Label */}
+                <div className="flex-1 flex items-start">
+                  <div className="text-xs sm:text-sm font-semibold text-muted-foreground/70 uppercase tracking-widest">
                     {item.label}
                   </div>
                 </div>
+
+                {/* Bottom Section - Count & Percentage */}
+                <div className="flex flex-col gap-3 items-start">
+                  {/* Large Count Display */}
+                  <div className="flex items-baseline gap-3">
+                    <div
+                      className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter transition-all duration-300 group-hover:scale-105 origin-left"
+                      style={{ color: borderColor }}
+                    >
+                      <AnimatedCount targetValue={item.count} />
+                    </div>
+                  </div>
+
+                  {/* Percentage Badge */}
+                  {hasPercentage && (
+                    <div
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl backdrop-blur-md"
+                      style={{
+                        backgroundColor: `${borderColor}20`,
+                        color: borderColor,
+                        border: `1.5px solid ${borderColor}50`,
+                      }}
+                    >
+                      <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: borderColor }} />
+                      {item.percentage}
+                    </div>
+                  )}
+                </div>
               </div>
+
+              {/* Bottom Right Decorative Element */}
+              <div
+                className="absolute bottom-0 right-0 w-24 h-24 rounded-tl-3xl opacity-5 transition-all duration-500 group-hover:opacity-10"
+                style={{
+                  background: `linear-gradient(135deg, ${borderColor}, transparent)`,
+                }}
+              />
             </div>
           </div>
         );

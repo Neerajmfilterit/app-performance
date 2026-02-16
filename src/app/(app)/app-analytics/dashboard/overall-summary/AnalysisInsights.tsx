@@ -648,34 +648,35 @@ const AnalysisInsights = ({
   
 
   return fraudSubCategories.length > 0 ? (
-    <div className="w-full bg-background/50 dark:bg-card/50 border border-border/20 rounded-lg shadow-sm transition-all duration-300">
-      {/* Modern Section Header with Dropdown */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-4 border-b border-border/10">
+    <div className="w-full bg-gradient-to-br from-slate-50/50 via-white/30 to-slate-100/50 dark:from-slate-800/50 dark:via-slate-900/40 dark:to-slate-950/50 border border-border/30 rounded-2xl shadow-xl transition-all duration-300 overflow-hidden">
+      {/* Premium Section Header with Dropdown */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6 border-b border-border/20">
         
-        {/* Title */}
-        <div className="flex items-center gap-3">
-          <h2 className="text-base font-semibold text-foreground">
+        {/* Title Section */}
+        <div className="flex flex-col gap-1">
+          <h2 className="text-2xl font-bold text-foreground tracking-tight">
             {onClickValue ?? "Fraud Analysis"}
           </h2>
+          <p className="text-sm text-muted-foreground">Subcategory breakdown and insights</p>
         </div>
 
-        {/* Fraud Subcategory Selector */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground hidden sm:inline">
-            Filter by:
+        {/* Fraud Subcategory Selector - Premium Styling */}
+        <div className="flex items-center gap-3 bg-gradient-to-r from-slate-50/50 to-white/50 dark:from-slate-800/30 dark:to-slate-900/30 px-4 py-2.5 rounded-lg border border-border/20 backdrop-blur-sm">
+          <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider hidden sm:inline">
+            Filter:
           </span>
           <MFSingleSelect
             items={fraudSubCategoryItems}
             value={selectedKey ?? ""}
             onValueChange={handleKeySelect}
-            placeholder="Select fraud subcategory"
+            placeholder="Select subcategory"
             className="w-[12rem] h-[36px] text-subBody"
           />
         </div>
       </div>
 
-      {/* Content Area */}
-      <div className="p-4">
+      {/* Content Area - Premium Styling */}
+      <div className="p-6">
         {renderIncentSamplesDynamicView()}
       </div>
     </div>
