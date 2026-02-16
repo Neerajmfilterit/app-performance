@@ -758,7 +758,7 @@ const Dashboard = () => {
 
         {/* In-Depth Analysis Section */}
         <div className="transition-all duration-300">
-          <LazyComponentWrapper>
+          <LazyComponentWrapper delay={0.2}>
             <InDepthAnomalyAnalysis
               donutData={
                 Array.isArray(fraudCategoriesData)
@@ -800,7 +800,7 @@ const Dashboard = () => {
 
         {/* Insights & Details Section */}
         <div className="transition-all duration-300">
-          <LazyComponentWrapper>
+          <LazyComponentWrapper delay={0.4}>
             <AnalysisInsights
               selectedViewType={selectedType === "event" ? "events" : "install"}
               publisherfilter={selectedPublishers}
@@ -818,7 +818,7 @@ const Dashboard = () => {
 
         {/* Publisher Details Section */}
         <div className="transition-all duration-300">
-          <LazyComponentWrapper>
+          <LazyComponentWrapper delay={0.6}>
             <Publisher
               publisherfilter={selectedPublishers}
               campaignfilter={selectedCampaigns}

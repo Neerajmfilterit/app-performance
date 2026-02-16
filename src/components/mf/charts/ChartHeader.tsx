@@ -57,32 +57,36 @@ const ChartHeader = ({
     const isLongTitle =  title?.length  > 30;
 
   return (
-    <CardTitle className="p-2">
-      <div className="flex  md:space-x-2 space-x-0 justify-between items-center md:gap-2 gap-1">
+    <CardTitle className="p-3 border-b border-border/10">
+      <div className="flex md:space-x-3 space-x-0 justify-between items-center md:gap-3 gap-2">
         
         {/* Title with Icon */}
-        <div className="flex items-center md:gap-2 gap-1 text-body font-medium md:text-subHeader md:font-semibold">
-          {titleIcon && <span className="flex-shrink-0 p-2 dark:text-white rounded-md">{titleIcon}</span>}
+        <div className="flex items-center md:gap-3 gap-2 text-body font-medium md:text-lg md:font-semibold">
+          {titleIcon && (
+            <span className="flex-shrink-0 p-1.5 dark:text-white rounded-lg bg-primary/10 transition-all duration-200 hover:bg-primary/20">
+              {titleIcon}
+            </span>
+          )}
           {isLongTitle ? (
             <>
               {/* Truncated title for small devices */}
-              <span className="text-body font-medium md:text-subHeader md:font-semibold md:hidden">
+              <span className="text-sm font-medium md:text-lg md:font-semibold md:hidden truncate">
                 {title.slice(0, 30) + '...'}
               </span>
               {/* Full title for larger devices */}
-              <span className="hidden md:inline text-body font-medium md:text-subHeader md:font-semibold">
+              <span className="hidden md:inline text-sm font-medium md:text-lg md:font-semibold">
                 {title}
               </span>
             </>
           ) : (
-            <span className="text-body font-medium md:text-subHeader md:font-semibold">
+            <span className="text-sm font-medium md:text-lg md:font-semibold">
               {title}
             </span>
           )}
         </div>
  
         {/* Controls */}
-        <div className="flex  space-x-1 justify-between  items-center">
+        <div className="flex space-x-2 justify-between items-center gap-1">
  
           {/* Generic Filter */}
           {filterType && (filterOptions?.length ?? 0) > 0 && (

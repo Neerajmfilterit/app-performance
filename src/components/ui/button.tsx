@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center dark:text-white justify-center whitespace-nowrap rounded-md text-subBody font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ",
+  "inline-flex items-center dark:text-white justify-center whitespace-nowrap rounded-md text-subBody font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-95 hover:shadow-sm",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:opacity-75 rounded-full capitalize",
+          "bg-primary text-primary-foreground hover:opacity-90 hover:scale-105 rounded-full capitalize shadow-md hover:shadow-lg",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 capitalize",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 capitalize hover:scale-105 shadow-sm hover:shadow-md",
         outline:
-          "border border-input border-primary dark:border-gray-400 bg-background hover:bg-accent hover:text-accent-foreground capitalize dark:text-accent-foreground dark:text-white",
+          "border border-input border-primary dark:border-gray-400 bg-background hover:bg-accent hover:text-accent-foreground capitalize dark:text-accent-foreground dark:text-white hover:shadow-sm hover:scale-105",
         secondary:
-          "bg-secondary text-secondary-foreground hover:text-slate-800 capitalize",
-        ghost: "hover:bg-accent hover:text-accent-foreground capitalize dark:text-white",
+          "bg-secondary text-secondary-foreground hover:text-slate-800 capitalize hover:scale-105 hover:shadow-sm",
+        ghost: "hover:bg-accent hover:text-accent-foreground capitalize dark:text-white hover:scale-105",
         link: "text-primary underline-offset-4 hover:underline capitalize",
       },
       size: {

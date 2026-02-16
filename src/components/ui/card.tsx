@@ -14,8 +14,8 @@ const Card = React.forwardRef<
     ref={ref}
     className={cn(
       roundedBottomOnly 
-        ? "rounded-b-xl border border-border/40 bg-card text-card-foreground shadow-sm" 
-        : "rounded-xl border border-border/40 bg-card text-card-foreground shadow-sm",
+        ? "rounded-b-lg border border-border/20 dark:bg-gradient-to-br dark:from-card dark:to-card/80 bg-gradient-to-br from-white to-slate-50/50 text-card-foreground shadow-sm hover:shadow-md transition-all duration-300" 
+        : "rounded-lg border border-border/20 dark:bg-gradient-to-br dark:from-card dark:to-card/80 bg-gradient-to-br from-white to-slate-50/50 text-card-foreground shadow-sm hover:shadow-md transition-all duration-300",
       className,
     )}
     {...props}

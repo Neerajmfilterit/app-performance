@@ -304,31 +304,46 @@ const StatsCards = ({
   }
 
   return (
-    <div className={`grid ${getGridColsClass()} w-full gap-2 ${className}`}>
-      {cardItems.map((item) => {
+    <div className={`grid ${getGridColsClass()} w-full gap-4 ${className}`}>
+      {cardItems.map((item, index) => {
         const hasPercentage = showPercentage && item.percentage;
         const borderColor = item.colorCode;
         const countColor = item.colorCode !== defaultBorderColor ? item.colorCode : defaultCountColor;
 
         return (
-          <div key={item.key} className="flex-1 group">
+          <div 
+            key={item.key} 
+            className="flex-1 group"
+            style={{
+              animation: `slideInUp 0.5s ease-out ${index * 0.1}s both`,
+            }}
+          >
             <div
-              className="relative overflow-hidden  dark:bg-card bg-white rounded-xl border border-border/40 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] hover:border-border/60"
+              className="relative overflow-hidden dark:bg-gradient-to-br dark:from-card dark:to-card/80 bg-gradient-to-br from-white to-slate-50/50 rounded-lg border border-border/20 shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/30 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-slate-50"
               style={{
                 height: getCardHeightStyle(),
               }}
             >
-              {/* Decorative gradient bar */}
+              {/* Animated gradient bar */}
               <div
-                className="absolute top-0 right-0 w-1.5 h-full transition-all duration-300 group-hover:w-2"
+                className="absolute top-0 right-0 h-full transition-all duration-500 group-hover:w-1 opacity-0 group-hover:opacity-100"
                 style={{
-                  background: `linear-gradient(180deg, ${borderColor}, ${borderColor}80)`,
+                  width: '0.25rem',
+                  background: `linear-gradient(180deg, ${borderColor}, transparent)`,
                 }}
               />
               
-              {/* Decorative background accent */}
+              {/* Animated background accent - subtle */}
               <div
-                className="absolute top-0 right-0 w-24 h-24 rounded-full blur-3xl opacity-10 transition-all duration-300 group-hover:opacity-20"
+                className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-15 pointer-events-none"
+                style={{
+                  background: borderColor,
+                }}
+              />
+
+              {/* Left side decorative accent */}
+              <div
+                className="absolute -left-8 -top-8 w-16 h-16 rounded-full blur-2xl opacity-5 transition-all duration-500 group-hover:opacity-10"
                 style={{
                   background: borderColor,
                 }}
@@ -338,41 +353,42 @@ const StatsCards = ({
               {icons[item.key] && (() => {
                 const IconComponent = icons[item.key];
                 return (
-                  <div className="absolute top-2 left-2 z-10 rounded-md p-1">
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-gradient-to-br from-indigo-600 to-green-500">
-                    <IconComponent 
-                      className="w-5 h-5 sm:w-8 sm:h-8 transition-all duration-300 group-hover:scale-110 text-white bg-primary/10 rounded-full p-1 " 
-                    />
-
-                    </span>
+                  <div className="absolute top-3 left-3 z-10">
+                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-md" style={{ backgroundColor: `${borderColor}15` }}>
+                      <IconComponent 
+                        className="w-4 h-4 transition-all duration-300"
+                        style={{ color: borderColor }}
+                      />
+                    </div>
                   </div>
                 );
               })()}
 
               <div className="relative p-4 h-full flex flex-col justify-center items-center">
                 <div className="flex flex-col gap-2 items-center w-full">
-                  {/* Count Row */}
+                  {/* Count Row with animation */}
                   <div className="flex flex-row gap-2 items-center justify-center flex-wrap">
                     <div
-                      className="text-header sm:text-title font-bold text-center tracking-tight transition-all duration-300 dark:text-white"
+                      className="text-2xl sm:text-3xl font-bold text-center tracking-tight transition-all duration-300 dark:text-white group-hover:scale-110"
                       style={{ color: hasPercentage ? countColor : undefined }}
                     >
                       <AnimatedCount targetValue={item.count} />
                     </div>
                     {hasPercentage && (
                       <span
-                        className="text-subBody sm:text-subBody font-bold rounded-lg px-2.5 py-1 shadow-sm transition-all duration-300 group-hover:scale-105"
+                        className="text-xs sm:text-sm font-bold rounded-md px-2 py-1 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md backdrop-blur-sm"
                         style={{
-                          backgroundColor: `${borderColor}15`,
+                          backgroundColor: `${borderColor}20`,
                           color: borderColor,
-                          border: `1px solid ${borderColor}30`,
+                          border: `1px solid ${borderColor}40`,
                         }}
                       >
                         {item.percentage}
                       </span>
                     )}
                   </div>
-                  <div className="text-body font-medium text-muted-foreground text-center">
+                  {/* Label with fade in */}
+                  <div className="text-xs sm:text-sm font-medium text-muted-foreground text-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                     {item.label}
                   </div>
                 </div>
