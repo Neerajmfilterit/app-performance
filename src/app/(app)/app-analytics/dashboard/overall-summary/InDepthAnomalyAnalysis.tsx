@@ -201,24 +201,22 @@ const InDepthAnomalyAnalysis = ({
   }, [reattributionExportData, setExporting, selectedRadio1]);
 
   return (
-    <div className="flex flex-col w-full backdrop-blur-lg bg-background/80 dark:bg-card/80 border border-border/40 rounded-xl shadow-lg p-2 transition-all duration-300 space-y-2">
+    <div className="flex flex-col w-full bg-background/50 dark:bg-card/50 border border-border/20 rounded-lg shadow-sm p-4 transition-all duration-300 space-y-4">
       {/* Modern Section Header */}
-      <div className="flex items-center justify-center gap-2">
-        <div className="h-8 w-1 bg-gradient-to-b from-primary to-secondary rounded-full dark:from-primary dark:to-white" />
-        <h2 className="text-header font-bold text-foreground gradient-text dark:!text-white dark:bg-none dark:[-webkit-text-fill-color:white]">
+      <div className="flex items-center gap-3 pb-2 border-b border-border/10">
+        <h2 className="text-lg font-semibold text-foreground">
           In-Depth Anomaly Analysis
         </h2>
-        <div className="h-8 w-1 bg-gradient-to-b from-secondary to-primary rounded-full dark:from-white dark:to-primary" />
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-2 transition-all duration-300">
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 transition-all duration-300">
         {/* Fraud Categories Donut Chart */}
         <div
           ref={(el) => {
             if (el) cardRefs.current["fraud_categories"] = el;
           }}
-          className="transition-all duration-300 hover:shadow-xl"
+          className="transition-all duration-300 hover:shadow-sm rounded-lg"
         >
           <DonutChart
             chartData={donutData}
@@ -265,7 +263,7 @@ const InDepthAnomalyAnalysis = ({
           ref={(el) => {
             if (el) cardRefs.current["fraud_sub_categories"] = el;
           }}
-          className="col-span-2 transition-all duration-300 hover:shadow-xl"
+          className="col-span-2 transition-all duration-300 hover:shadow-sm rounded-lg"
         >
           <ProgressBarChart
             cardHeight="19.6875rem"
@@ -295,13 +293,13 @@ const InDepthAnomalyAnalysis = ({
       </div>
 
       {/* Second Row - Date Wise & Publisher/Vendor Analysis */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full mt-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
         {/* Area Chart */}
         <div
           ref={(el) => {
             if (el) cardRefs.current["date_wise_fraud_sub_categories"] = el;
           }}
-          className="transition-all duration-300 h-auto hover:shadow-xl"
+          className="transition-all duration-300 h-auto hover:shadow-sm rounded-lg"
         >
           <ChartAreaGradient
             chartData={areaChartData1}

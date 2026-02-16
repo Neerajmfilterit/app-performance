@@ -610,7 +610,7 @@ const AnalysisInsights = ({
             ref={(el) => {
               if (el) cardRefs.current["fraud_sub_category_progress"] = el;
             }}
-            className="w-full h-full transition-all duration-300 p-2 hover:shadow-xl"
+            className="w-full h-full transition-all duration-300 p-3 hover:shadow-sm rounded-lg"
           >
             <ProgressBarChart
               title={progressTitle}
@@ -648,23 +648,20 @@ const AnalysisInsights = ({
   
 
   return fraudSubCategories.length > 0 ? (
-    <div className="w-full backdrop-blur-lg bg-background/80 dark:bg-card/80 border border-border/40 rounded-xl shadow-lg transition-all duration-300">
+    <div className="w-full bg-background/50 dark:bg-card/50 border border-border/20 rounded-lg shadow-sm transition-all duration-300">
       {/* Modern Section Header with Dropdown */}
-      <div className="flex items-center justify-between gap-2 p-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-4 border-b border-border/10">
         
-        {/* Title with gradient bars */}
-        <div className="flex items-center justify-center gap-2">
-        <div className="h-8 w-1 bg-gradient-to-b from-primary to-secondary rounded-full dark:from-primary dark:to-white" />
-        <h2 className="text-subHeader font-bold text-foreground gradient-text dark:!text-white dark:bg-none dark:[-webkit-text-fill-color:white]">
-          {onClickValue ?? ""}
-        </h2>
-         <div className="h-8 w-1 bg-gradient-to-b from-secondary to-primary rounded-full dark:from-white dark:to-primary" />
+        {/* Title */}
+        <div className="flex items-center gap-3">
+          <h2 className="text-base font-semibold text-foreground">
+            {onClickValue ?? "Fraud Analysis"}
+          </h2>
         </div>
 
         {/* Fraud Subcategory Selector */}
-        
         <div className="flex items-center gap-2">
-          <span className="text-subBody text-muted-foreground hidden sm:inline">
+          <span className="text-sm text-muted-foreground hidden sm:inline">
             Filter by:
           </span>
           <MFSingleSelect
@@ -678,7 +675,9 @@ const AnalysisInsights = ({
       </div>
 
       {/* Content Area */}
-      {renderIncentSamplesDynamicView()}
+      <div className="p-4">
+        {renderIncentSamplesDynamicView()}
+      </div>
     </div>
   ) : null;
 };

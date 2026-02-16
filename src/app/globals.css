@@ -62,30 +62,30 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 215.3,25%,26.7%;
-    --foreground: 0 0% 98%;
-    --card: 221, 39%, 11%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 306, 82%, 35%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 221 30% 16%;
+    --foreground: 210 20% 98%;
+    --card: 221 25% 22%;
+    --card-foreground: 210 20% 98%;
+    --popover: 221 25% 22%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 221 25% 22%;
+    --secondary: 280 65% 50%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 221 25% 35%;
+    --muted-foreground: 210 10% 65%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 221 25% 22%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 221 25% 28%;
+    --input: 221 25% 28%;
+    --ring: 217 91% 60%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 163 72% 43%;
+    --chart-3: 43 96% 56%;
+    --chart-4: 280 65% 50%;
+    --chart-5: 339 82% 58%;
   }
 }
 
@@ -237,6 +237,50 @@ body {
   .hover-lift:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Modern Card Shadow System */
+  .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-md {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .dark .shadow-md {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark .shadow-lg {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Clean card styling */
+  .card-modern {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-modern:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary);
+  }
+
+  .dark .card-modern:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
 }
 

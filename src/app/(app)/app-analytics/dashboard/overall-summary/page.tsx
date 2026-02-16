@@ -454,21 +454,21 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-4 w-full px-4 py-6 md:px-6">
 
-        <h1 className="text-header font-semibold text-foreground text-center md:hidden sticky top-0 z-50 bg-background px-4 py-3 border-b border-gray-200">
+        <h1 className="text-lg font-semibold text-foreground text-center md:hidden sticky top-0 z-50 bg-background px-4 py-3 border-b border-border/20">
           Overall Summary
         </h1>
-        <div className="sticky top-0 z-50   dark:bg-card bg-white border border-border/40 rounded-xl shadow-lg mt-2 ">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2 p-2 sm:p-2 md:h-[48px]">
-            <div className="lg:hidden w-full flex flex-col gap-2">
+        <div className="sticky top-0 z-50 bg-background/80 dark:bg-card/80 border border-border/20 rounded-lg shadow-sm backdrop-blur-sm">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 p-3 sm:p-3 md:h-[52px]">
+            <div className="lg:hidden w-full flex flex-col gap-3">
               <div className="flex items-center justify-between w-full">
                 <Button
                   variant="outline"
-
-                  className="flex items-center gap-1 px-2 py-1 text-sm sm:px-3 sm:py-1.5 sm:text-sm md:px-4 md:py-2 md:text-base shrink-0"
+                  className="flex items-center gap-2 px-3 py-2 text-sm sm:px-3 sm:py-2 sm:text-sm md:px-4 md:py-2 md:text-base shrink-0 rounded-lg hover:bg-accent/50 transition-all duration-200 border-border/30"
+                  onClick={() => setIsMobileFilterOpen(true)}
                 >
-                  <FilterIcon className="w-4 h-4" onClick={() => setIsMobileFilterOpen(true)} />
+                  <FilterIcon className="w-4 h-4" />
                   Filters
 
                 </Button>
@@ -485,7 +485,7 @@ const Dashboard = () => {
                 />
               </div>
               {selectedType === "event" && (
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-200 w-full">
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-primary/30 bg-primary/5 hover:bg-primary/8 transition-all duration-200 w-full">
                   <Calendar className="w-4 h-4 text-primary" />
                   <span className="text-subBody sm:text-subBody font-medium text-foreground">
                     Conversion Date
@@ -529,7 +529,7 @@ const Dashboard = () => {
                   />
                 </div>
                 {selectedType === "event" && (
-                  <div className="shrink-0 group relative flex items-center gap-2 rounded-full border border-border/50 bg-gradient-to-br from-background via-background to-muted/20 px-4 py-2 text-subBody font-medium text-foreground shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105  hover:shadow-md  active:scale-100">
+                  <div className="shrink-0 group relative flex items-center gap-2 rounded-lg border border-border/30 bg-background/50 px-4 py-2 text-subBody font-medium text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 hover:bg-background/70 active:scale-95">
                     <Calendar className="w-4 h-4 text-primary" />
                     <span className="text-subBody sm:text-subBody font-medium text-foreground">
                       Conversion Date
@@ -586,6 +586,7 @@ const Dashboard = () => {
         />
 
 
+        {/* Key Metrics Section */}
         <div className="transition-all duration-300 ease-in-out">
           <StatsCards
             data={totalPercentageData || {}}
@@ -603,13 +604,13 @@ const Dashboard = () => {
           />
         </div>
 
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-2 transition-all duration-300">
+        {/* Charts Grid Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 transition-all duration-300">
           <div
             ref={(el) => {
               if (el) cardRefs.current["split_of_sources"] = el;
             }}
-            className="transition-all duration-300 hover:shadow-xl"
+            className="transition-all duration-300 hover:shadow-md rounded-lg"
           >
             <DonutChart
               chartData={splitOfSourcesChartData}
@@ -655,7 +656,7 @@ const Dashboard = () => {
             ref={(el) => {
               if (el) cardRefs.current["date_wise_trend"] = el;
             }}
-            className="lg:col-span-2 transition-all duration-300 hover:shadow-xl"
+            className="lg:col-span-2 transition-all duration-300 hover:shadow-md rounded-lg"
           >
             <StackedBarWithLine
               chartData={dwTrendData?.data || []}
@@ -698,11 +699,12 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* Publisher/Vendor Trend Section */}
         <div
           ref={(el) => {
             if (el) cardRefs.current["publisher_vendor_trend"] = el;
           }}
-          className="w-full transition-all duration-300 hover:shadow-xl"
+          className="w-full transition-all duration-300 hover:shadow-md rounded-lg"
         >
           <StackedBarWithLine
             chartData={publisherVendorData?.data || []}
@@ -754,6 +756,7 @@ const Dashboard = () => {
         </div>
 
 
+        {/* In-Depth Analysis Section */}
         <div className="transition-all duration-300">
           <LazyComponentWrapper>
             <InDepthAnomalyAnalysis
@@ -795,6 +798,7 @@ const Dashboard = () => {
           </LazyComponentWrapper>
         </div>
 
+        {/* Insights & Details Section */}
         <div className="transition-all duration-300">
           <LazyComponentWrapper>
             <AnalysisInsights
@@ -812,6 +816,7 @@ const Dashboard = () => {
           </LazyComponentWrapper>
         </div>
 
+        {/* Publisher Details Section */}
         <div className="transition-all duration-300">
           <LazyComponentWrapper>
             <Publisher
